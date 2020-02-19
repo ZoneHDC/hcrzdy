@@ -4,6 +4,20 @@
     package="com.changwan.hcrzdy.sogou"
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="preferExternal">
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+  <uses-permission android:name="android.permission.GET_TASKS"/>
+  <!--最好能提供的权限-->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <!-- 如果有视频相关的广告且使用textureView播放，请务必添加，否则黑屏 -->
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+
   <supports-screens
       android:smallScreens="true"
       android:normalScreens="true"
@@ -11,21 +25,15 @@
       android:xlargeScreens="true"
       android:anyDensity="true" />
   <application
+      android:name="com.iwolong.ads.WLApp"
+      android:networkSecurityConfig="@xml/network_config"
       android:theme="@style/UnityThemeSelector"
       android:icon="@mipmap/app_icon"
       android:label="@string/app_name">
-    <activity
 
-        android:screenOrientation="portrait"
-        android:launchMode="singleTask"
-        android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-        android:hardwareAccelerated="false"
-        android:name="com.changwan.hcrzdy.sogou.SplashActivity">
-
-    </activity>
     <activity
         android:label="@string/app_name" android:screenOrientation="portrait"
-        android:launchMode="singleTask"
+        android:launchMode="singleTop"
         android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
         android:hardwareAccelerated="false"
         android:name="com.changwan.hcrzdy.sogou.MainActivity">
@@ -38,163 +46,28 @@
       <meta-data android:name="android.notch_support" android:value="true" />
     </activity>
 
-      <!-- 广告SDK内容 -->
-      <!-- >= 28 -->
-      <uses-library android:name="org.apache.http.legacy" android:required="false" />
-      <!-- baidu start -->
-      <!-- 如果targetSdkVersion设置值>=24，则强烈建议添加以下provider，否则会影响app变现 -->
-      <!-- android:authorities="${packageName}.bd.providerasd" authorities中${packageName}部分必须替换成app自己的包名 -->
-      <provider android:name="com.baidu.mobads.openad.FileProvider" android:authorities="${applicationId}.bd.provider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/bd_provider_paths" />
-      </provider>
-      <!-- for baidu xadsdk internal web-browser -->
-      <!-- 如果使用信息流模板，点击后播放视频，建议删除对theme的设置，否则影响视频播放UI效果 -->
-      <activity android:name="com.baidu.mobads.AppActivity" android:configChanges="screenSize|keyboard|keyboardHidden|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-      <activity android:name="com.baidu.mobads.production.rewardvideo.MobRewardVideoActivity" android:configChanges="screenSize|orientation|keyboardHidden" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar">
-      </activity>
-      <!-- baidu end -->
-      <!-- GDT start -->
-      <!-- targetSDKVersion >= 24时才需要添加这个 provider。provider 的 authorities 属性的值为 ${applicationId}.fileprovider，请开发者根据自己的 ${applicationId} 来设置这个值 -->
-      <provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/gdt_file_path" />
-      </provider>
-      <service android:name="com.qq.e.comm.DownloadService" android:exported="false" />
-      <activity android:name="com.qq.e.ads.ADActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-      <activity android:name="com.qq.e.ads.PortraitADActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:screenOrientation="portrait" />
-      <activity android:name="com.qq.e.ads.LandscapeADActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:screenOrientation="landscape" />
-      <!-- GDT end -->
-      <!-- UniplaySDK start -->
-      <activity android:name="com.uniplay.adsdk.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
-      </activity>
-      <activity android:name="com.uniplay.adsdk.InterstitialAdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent" />
-      <activity android:name="com.uniplay.adsdk.NetworkChangeActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-      <!-- 应用如需上传到”谷歌市场”请务必将 DownloadService 替换为 gdService -->
-      <service android:name="com.uniplay.adsdk.DownloadService" />
-      <provider android:name="com.uniplay.adsdk.UniPlayFileProvider" android:authorities="${applicationId}.uniplay.fileprovider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/uniplay_file_path" />
-      </provider>
-      <activity android:name="com.joomob.activity.AdVideoActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-      <!-- UniplaySDK End -->
-      <!-- Oneway Start -->
-      <provider android:name="mobi.oneway.export.OWProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/ow_file_paths" />
-      </provider>
-      <activity android:name="mobi.oneway.export.AdShowActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:hardwareAccelerated="true" android:launchMode="singleTask" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-      <provider android:name="mobi.oneway.common.OwGdtFileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/ow_g_file_path" />
-      </provider>
-      <provider android:name="mobi.oneway.common.OwBdFileProvider" android:authorities="${applicationId}.bd.provider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/ow_b_file_paths" />
-      </provider>
-      <provider android:name="com.liulishuo.okdownload.OkDownloadProvider" android:authorities="${applicationId}.com.liulishuo.okdownload" android:exported="false" />
-      <activity android:name="com.didi.virtualapk.delegate.StubActivity" android:exported="false" android:launchMode="standard" />
-      <!-- Stub Activities -->
-      <activity android:name="com.didi.virtualapk.core.A$1" android:exported="false" android:launchMode="standard" />
-      <activity android:name="com.didi.virtualapk.core.A$2" android:exported="false" android:launchMode="standard" android:theme="@android:style/Theme.Translucent" />
-      <!-- Stub Activities -->
-      <activity android:name="com.didi.virtualapk.core.B$1" android:exported="false" android:launchMode="singleTop" />
-      <activity android:name="com.didi.virtualapk.core.B$2" android:exported="false" android:launchMode="singleTop" />
-      <activity android:name="com.didi.virtualapk.core.B$3" android:exported="false" android:launchMode="singleTop" />
-      <activity android:name="com.didi.virtualapk.core.B$4" android:exported="false" android:launchMode="singleTop" />
-      <activity android:name="com.didi.virtualapk.core.B$5" android:exported="false" android:launchMode="singleTop" />
-      <activity android:name="com.didi.virtualapk.core.B$6" android:exported="false" android:launchMode="singleTop" />
-      <activity android:name="com.didi.virtualapk.core.B$7" android:exported="false" android:launchMode="singleTop" />
-      <activity android:name="com.didi.virtualapk.core.B$8" android:exported="false" android:launchMode="singleTop" />
-      <!-- Stub Activities -->
-      <activity android:name="com.didi.virtualapk.core.C$1" android:exported="false" android:launchMode="singleTask" />
-      <activity android:name="com.didi.virtualapk.core.C$2" android:exported="false" android:launchMode="singleTask" />
-      <activity android:name="com.didi.virtualapk.core.C$3" android:exported="false" android:launchMode="singleTask" />
-      <activity android:name="com.didi.virtualapk.core.C$4" android:exported="false" android:launchMode="singleTask" />
-      <activity android:name="com.didi.virtualapk.core.C$5" android:exported="false" android:launchMode="singleTask" />
-      <activity android:name="com.didi.virtualapk.core.C$6" android:exported="false" android:launchMode="singleTask" />
-      <activity android:name="com.didi.virtualapk.core.C$7" android:exported="false" android:launchMode="singleTask" />
-      <activity android:name="com.didi.virtualapk.core.C$8" android:exported="false" android:launchMode="singleTask" />
-      <!-- Stub Activities -->
-      <activity android:name="com.didi.virtualapk.core.D$1" android:exported="false" android:launchMode="singleInstance" />
-      <activity android:name="com.didi.virtualapk.core.D$2" android:exported="false" android:launchMode="singleInstance" />
-      <activity android:name="com.didi.virtualapk.core.D$3" android:exported="false" android:launchMode="singleInstance" />
-      <activity android:name="com.didi.virtualapk.core.D$4" android:exported="false" android:launchMode="singleInstance" />
-      <activity android:name="com.didi.virtualapk.core.D$5" android:exported="false" android:launchMode="singleInstance" />
-      <activity android:name="com.didi.virtualapk.core.D$6" android:exported="false" android:launchMode="singleInstance" />
-      <activity android:name="com.didi.virtualapk.core.D$7" android:exported="false" android:launchMode="singleInstance" />
-      <activity android:name="com.didi.virtualapk.core.D$8" android:exported="false" android:launchMode="singleInstance" />
-      <!-- Local Service running in main process -->
-      <service android:name="com.didi.virtualapk.delegate.LocalService" android:exported="false" />
-      <!-- Daemon Service running in child process -->
-      <service android:name="com.didi.virtualapk.delegate.RemoteService" android:exported="false" android:process=":daemon">
-        <intent-filter>
-          <action android:name="${applicationId}.intent.ACTION_DAEMON_SERVICE" />
-        </intent-filter>
-      </service>
-      <provider android:name="com.didi.virtualapk.delegate.RemoteContentProvider" android:authorities="${applicationId}.VirtualAPK.Provider" android:exported="false" android:process=":daemon" />
-      <!-- oneway end -->
-      <!-- mintegral start -->
-      <provider android:name="com.mintegral.msdk.base.utils.MTGFileProvider" android:authorities="${applicationId}.mtgFileProvider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/mtg_provider_paths" />
-      </provider>
-      <activity android:name="com.mintegral.msdk.activity.MTGCommonActivity" android:configChanges="keyboard|orientation" android:exported="true" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar">
-      </activity>
-      <receiver android:name="com.mintegral.msdk.click.AppReceiver">
-        <intent-filter>
-          <action android:name="android.intent.action.PACKAGE_ADDED" />
-          <data android:scheme="package" />
-        </intent-filter>
-      </receiver>
-      <service android:name="com.mintegral.msdk.shell.MTGService">
-        <intent-filter>
-          <action android:name="com.mintegral.msdk.download.action" />
-        </intent-filter>
-      </service>
-      <activity android:name="com.mintegral.msdk.interstitial.view.MTGInterstitialActivity" android:configChanges="orientation|screenSize" android:screenOrientation="portrait" />
-      <activity android:name="com.mintegral.msdk.reward.player.MTGRewardVideoActivity" android:configChanges="orientation|keyboardHidden|screenSize" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-      <!-- mintegral end -->
-      <!-- TouTiao start -->
-      <provider android:name="com.bytedance.sdk.openadsdk.TTFileProvider" android:authorities="${applicationId}.TTFileProvider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/tt_provider_paths" />
-      </provider>
-      <provider android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider" android:authorities="${applicationId}.TTMultiProvider" android:exported="false" />
-      <service android:name="com.ss.android.socialbase.downloader.notification.DownloadNotificationService" />
-      <service android:name="com.ss.android.socialbase.downloader.downloader.DownloadService" />
-      <service android:name="com.ss.android.socialbase.downloader.downloader.IndependentProcessDownloadService" android:process=":downloader">
-        <intent-filter>
-          <action android:name="com.ss.android.socialbase.downloader.remote" />
-        </intent-filter>
-      </service>
-      <service android:name="com.ss.android.socialbase.downloader.impls.DownloadHandleService" />
-      <!-- APP DOWNLOADER START -->
-      <service android:name="com.ss.android.socialbase.appdownloader.DownloadHandlerService" />
-      <activity android:name="com.ss.android.socialbase.appdownloader.view.DownloadSizeLimitActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Dialog" />
-      <activity android:name="com.ss.android.socialbase.appdownloader.view.DownloadTaskDeleteActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Dialog" />
-      <activity android:name="com.ss.android.downloadlib.activity.TTDelegateActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-      <receiver android:name="com.ss.android.downloadlib.core.download.DownloadReceiver" />
-      <receiver android:name="com.bytedance.embedapplog.collector.Collector" android:enabled="true" android:exported="true" />
-      <!-- 下面的activity和service必须注册 -->
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTLandingPageActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" />
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTPlayableLandingPageActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" />
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTVideoLandingPageActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" />
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" />
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTRewardExpressVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" />
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTFullScreenVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" />
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTFullScreenExpressVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" />
-      <activity android:name="com.bytedance.sdk.openadsdk.activity.TTDelegateActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-      <service android:name="com.bytedance.sdk.openadsdk.multipro.aidl.BinderPoolService" />
-      <!-- TouTiao end -->
-      <!-- SigMob Start -->
-      <provider android:name="com.sigmob.sdk.SigmobFileProvider" android:authorities="${applicationId}.sigprovider" android:exported="false" android:grantUriPermissions="true">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/sigmob_provider_paths" />
-      </provider>
-      <!-- 广告展示Activity -->
-      <activity android:name="com.sigmob.sdk.base.common.AdActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.DeviceDefault" />
-      <!-- SigMob End -->
-      <activity android:name="com.iwolong.ads.WLTestActivity" android:exported="true"/>
+    <provider
+        android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+        android:authorities="${applicationId}.TTFileProvider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+      <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/file_paths" />
+    </provider>
 
-
+    <provider
+        android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+        android:authorities="${applicationId}.TTMultiProvider"
+        android:exported="false" />
+    <activity android:name="com.iwolong.ads.WLTestActivity" android:exported="true"/>
 
     <meta-data android:name="unity.build-id" android:value="c70ac869-4f99-4365-b18b-1e0e92ed4f60" />
     <meta-data android:name="unity.splash-mode" android:value="0" />
     <meta-data android:name="unity.splash-enable" android:value="True" />
     <meta-data android:name="notch.config" android:value="portrait|landscape" />
   </application>
+
   <uses-feature android:glEsVersion="0x00020000" />
   <uses-feature android:name="android.hardware.vulkan" android:required="false" />
   <uses-permission android:name="android.permission.INTERNET" />

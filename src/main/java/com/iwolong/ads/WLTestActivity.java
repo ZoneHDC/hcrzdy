@@ -43,5 +43,4 @@ public class WLTestActivity extends Activity {
         });
         dlg.show();
     }
-
 }

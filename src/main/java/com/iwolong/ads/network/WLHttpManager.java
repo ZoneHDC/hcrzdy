@@ -2,6 +2,8 @@ package com.iwolong.ads.network;
 
 import java.util.Map;
 
+
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -11,7 +13,7 @@ public class WLHttpManager {
     private WLApiServer mApiServer;
     private static WLHttpManager sInstance = new WLHttpManager();
 
-    public static WLHttpManager instance() {
+    public static  WLHttpManager instance() {
         if (sInstance.mApiServer == null) {
             Retrofit retrofit = new Retrofit.Builder()  //创建Retrofit实例
                     .baseUrl(WLConstants.WL_HTTP_BASE_URL)    //url头部

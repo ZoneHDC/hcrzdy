@@ -1,9 +1,16 @@
 [
   {
-    "is_pack": true,
+    "is_pack": false,
     "name": "mz",
     "sdk_debug": false,
     "package_name": "com.changwan.hcrzdy.mz",
     "app_name": "火柴人总动员"
-  }
+  },
+  {
+  "is_pack": true,
+  "name": "sw",
+  "sdk_debug": false,
+  "package_name": "com.changwan.hcrzdy.sw",
+  "app_name": "火柴人总动员"
+}
 ]
