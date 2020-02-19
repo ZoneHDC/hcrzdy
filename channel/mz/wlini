@@ -1,0 +1,80 @@
+{
+	"package_name": "com.changwan.hcrzdy.mz",
+	"cw_appid": "20200205173804",
+	"cw_channel": "19112912",
+	"td_appid": "5A0769B67461447FAA386BD3BB3AA452",
+	"channel": "魅族",
+	"ad_appid": "0883d45ef925",
+	"splash_ad": [{
+		"cw_position": "4da0df4b76e71c47fd13f2b02589c8c7",
+		"sdk_position": "59213",
+		"desc": "开屏广告"
+	},{
+      		"cw_position": "e341adf0e361ac0f6ad0159fcc6325e6",
+      		"sdk_position": "59213",
+      		"desc": "开屏广告激励"
+      	},{
+      		"cw_position": "1b3dfc397792ec4254c51bdc14738305",
+      		"sdk_position": "59213",
+      		"desc": "开屏广告全屏"
+      	}],
+	"interstitial_ad": [{
+			"cw_position": "6ed0432a0f4195e7b80c3454a4d5da69",
+			"sdk_position": "75076",
+			"desc": "插屏音重新开始"
+		},{
+			"cw_position": "8b9e38e5e16247c0f16b1c8235f611ba",
+			"sdk_position": "75076",
+			"desc": "插屏数字帮助"
+		},{
+			"cw_position": "85bd497e735b6d54c2bd75f7d84b53f4",
+			"sdk_position": "75076",
+			"desc": "插屏问号"
+		},{
+			"cw_position": "45f27a6d9690fecf2bc13817bafef813",
+			"sdk_position": "75076",
+			"desc": "插屏钥匙+"
+		},{
+			"cw_position": "45639b5bb9b0956d69864679f2895373",
+			"sdk_position": "75076",
+			"desc": "插屏设置"
+		},{
+			"cw_position": "2dd51cf18ad599dd17e6747b4cc2407f",
+			"sdk_position": "75076",
+			"desc": "插屏音重新开始"
+		},{
+			"cw_position": "65f7f4373c73fbdc7db3ee2e1eca7221",
+			"sdk_position": "75076",
+			"desc": "插屏数字帮助"
+		},{
+			"cw_position": "aed1b93b318ea10239d2e8dcb4a5f04a",
+			"sdk_position": "75076",
+			"desc": "插屏问号"
+		},{
+			"cw_position": "406e5f341cafe195a73850a41652eae1",
+			"sdk_position": "75076",
+			"desc": "插屏钥匙+"
+		},{
+			"cw_position": "784661cc0be4248ca9a558cccd627be5",
+			"sdk_position": "75076",
+			"desc": "插屏设置"
+		}
+	],
+	"banner_ad": {
+		"cw_position": " 9cb513ddf02145ba54c6b7f575584d0d",
+		"sdk_position": "88129",
+		"desc": "banner1"
+	},
+	"reward_ad": [{
+			"cw_position": "41dc1034a748a6829906baf5a0c7aab0",
+			"sdk_position": "16135",
+			"desc": "激励视频解锁"
+		}
+	],
+	"fullscreen_ad": [{
+			"cw_position": "b130173c0983214d79567d10bde6a80f",
+			"sdk_position": "",
+			"desc": "全屏退出"
+		}
+	]
+}
