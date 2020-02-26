@@ -1,6 +1,6 @@
 [
   {
-    "is_pack": false,
+    "is_pack": true,
     "name": "mz",
     "sdk_debug": false,
     "package_name": "com.changwan.hcrzdy.mz",
@@ -13,7 +13,7 @@
   "package_name": "com.changwan.hcrzdy.sw",
   "app_name": "火柴人总动员"
 }, {
-  "is_pack": true,
+  "is_pack": false,
   "name": "sogou",
   "sdk_debug": false,
   "package_name": "com.changwan.hcrzdy.sogou",

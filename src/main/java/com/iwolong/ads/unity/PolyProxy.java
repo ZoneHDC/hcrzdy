@@ -3,12 +3,14 @@ package com.iwolong.ads.unity;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.Button;
+
 
 
 import com.iwolong.ads.WLSDKManager;
+import com.iwolong.ads.network.WLData;
 import com.iwolong.ads.utils.LogUtils;
+import com.iwolong.ads.utils.WLInitialization;
 import com.unity3d.player.UnityPlayer;
 
 import org.json.JSONObject;
@@ -22,20 +24,22 @@ import java.util.List;
 public class PolyProxy {
     public static WeakReference<Activity> sActivity;
     public static final int REQUEST_PERMISSIONS_CODE = 100;
-//
-   private final static String sGameObjectName="GameSDKLoad";
-   private final static String sGameFunctionName="AndroidCallUnity";
+
+       private final static String sGameObjectName="GameSDKLoad";
+    //private final static String sGameObjectName="ADManager";
+    private final static String sGameFunctionName="AndroidCallUnity";
     private final static String sGameFunctionName2="CloseBannerCall";
-//     private final static String sGameObjectName="ADManager";
-//   private final static String sGameFunctionName="AndroidCallUnity";
     private static Method sUnitySendMessageMethod;
     private static String sParams;
     private static UnityPlayer sUnityPlayer ;
     public static View container1;
+
     public static  View container2;
+
+    public Button skipView;
+    public ViewGroup mAdContainer;
+
     private static PolyProxy sManager = new PolyProxy();
-
-
 
     private static List<String> mNeedRequestPMSList = new ArrayList<>();
 
@@ -83,23 +87,26 @@ public class PolyProxy {
 
     public static void showBannerAd(String positionId) {
         ViewGroup container = (ViewGroup)getUnityPlayer();
-        WLSDKManager.instance().showBanner(sActivity.get(), (ViewGroup) container1, positionId);
+        WLSDKManager.instance().showBanner(sActivity.get(),(ViewGroup)container2, positionId);
     }
 
     public static void showInterstitialAd(String positionId) {
-        WLSDKManager.instance().showInterstitialAd(sActivity.get(),(ViewGroup) container1, positionId);
+       WLSDKManager.instance().showInterstitialAd(sActivity.get(),(ViewGroup) container1, positionId);
     }
 
     public static void showRewardAd(String positionId) {
-        WLSDKManager.instance().showRewardAd(sActivity.get(), positionId);
+        WLSDKManager.instance().showRewardAd(sActivity.get(), positionId,(ViewGroup) container1);
     }
 
     public  static  void fullRewardAd(String positonId){
-       WLSDKManager.instance().fullRewardAd(sActivity.get(),positonId);
+      WLSDKManager.instance().showFullAd(sActivity.get(),(ViewGroup) container1,positonId);
     }
-
-    public  static  void SpalshAd(String postionId){
-        WLSDKManager.instance().loadSplasAdIfNeed(postionId);
+ public  static  void SpalshAd(String positonId){
+     WLData wldata2 = WLInitialization.instance().getWLData();
+     if (wldata2 != null && !wldata2.isDisplayAd("4626c028b6e2d37b1d24b76550dc5841")) {
+         return;
+     }
+      WLSDKManager.instance().loadSplasAdIfNeed(sActivity.get(),(ViewGroup) container1);
     }
 
 
@@ -113,6 +120,7 @@ public class PolyProxy {
     public static void callbackUnity2(final String function, final String message, final String position) {
         callback.unitySendMessage2(function, message, position);
     }
+
     private static PolyProxyCallback callback = new PolyProxyCallback() {
         @Override
         public void unitySendMessage(String function, String message, String positonId) {
@@ -131,7 +139,7 @@ public class PolyProxy {
         }
         @Override
         public void unitySendMessage2(String function, String message, String positonId) {
-
+            LogUtils.e("func:" + function + " msg:" + message + " id:" + positonId) ;
             try {
                 JSONObject jobj = new JSONObject();
                 jobj.put("function", function);
@@ -141,11 +149,11 @@ public class PolyProxy {
                 Method md = clazz.getDeclaredMethod("UnitySendMessage", new Class<?>[] {String.class, String.class, String.class});
                 md.invoke(clazz, sGameObjectName, sGameFunctionName2, jobj.toString());
             } catch (Exception e) {
-
+                LogUtils.e("", e);
             }
         }
-
     };
+
 
     public static void initGameCentre( ) {
 
@@ -155,8 +163,10 @@ public class PolyProxy {
 
     }
 
+
     public static void exitGame() {
-           WLSDKManager.instance().exitGame(sActivity.get());
+
+        //WLSDKManager.instance().exitGame(sActivity.get());
     }
 
 }

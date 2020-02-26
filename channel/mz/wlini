@@ -1,80 +1,79 @@
 {
 	"package_name": "com.changwan.hcrzdy.mz",
-	"cw_appid": "20200205173804",
+	"cw_appid": "20200210205525",
 	"cw_channel": "19112912",
-	"td_appid": "5A0769B67461447FAA386BD3BB3AA452",
+	"td_appid": "F6F2FBD6C3ED4B62BFD229730D4D501A",
 	"channel": "魅族",
-	"ad_appid": "0883d45ef925",
+	"ad_appid": "57828ccd8156",
 	"splash_ad": [{
-		"cw_position": "4da0df4b76e71c47fd13f2b02589c8c7",
-		"sdk_position": "59213",
+		"cw_position": "085de27fba3ef96a647199ed74fe7b92",
+		"sdk_position": "59825",
 		"desc": "开屏广告"
 	},{
-      		"cw_position": "e341adf0e361ac0f6ad0159fcc6325e6",
-      		"sdk_position": "59213",
+      		"cw_position": "7b26b600e24b80ae4a1773d091199f2f",
+      		"sdk_position": "59825",
       		"desc": "开屏广告激励"
-      	},{
-      		"cw_position": "1b3dfc397792ec4254c51bdc14738305",
-      		"sdk_position": "59213",
+      	},
+      	{
+      		"cw_position": "7b26b600e24b80ae4a1773d091199f2f",
+      		"sdk_position": "59825",
       		"desc": "开屏广告全屏"
-      	}],
+      	},
+      	{
+              		"cw_position": "4626c028b6e2d37b1d24b76550dc5841",
+              		"sdk_position": "59825",
+              		"desc": "返回主页"
+              	}
+      	],
 	"interstitial_ad": [{
-			"cw_position": "6ed0432a0f4195e7b80c3454a4d5da69",
-			"sdk_position": "75076",
-			"desc": "插屏音重新开始"
+			"cw_position": "61b80d6d24381207f39c878c1fe22295",
+			"sdk_position": "79221",
+			"desc": "选项/声音"
 		},{
-			"cw_position": "8b9e38e5e16247c0f16b1c8235f611ba",
-			"sdk_position": "75076",
-			"desc": "插屏数字帮助"
+			"cw_position": "61b80d6d24381207f39c878c1fe22295",
+			"sdk_position": "79221",
+			"desc": "切换颜色"
 		},{
-			"cw_position": "85bd497e735b6d54c2bd75f7d84b53f4",
-			"sdk_position": "75076",
-			"desc": "插屏问号"
+			"cw_position": "70515cab1f5e0e3e7a8cb9e03b9d3fbc",
+			"sdk_position": "79221",
+			"desc": "重新开始（继续游戏）"
 		},{
-			"cw_position": "45f27a6d9690fecf2bc13817bafef813",
-			"sdk_position": "75076",
-			"desc": "插屏钥匙+"
+			"cw_position": "70515cab1f5e0e3e7a8cb9e03b9d3fbc",
+			"sdk_position": "79221",
+			"desc": "下一关"
 		},{
-			"cw_position": "45639b5bb9b0956d69864679f2895373",
-			"sdk_position": "75076",
-			"desc": "插屏设置"
-		},{
-			"cw_position": "2dd51cf18ad599dd17e6747b4cc2407f",
-			"sdk_position": "75076",
-			"desc": "插屏音重新开始"
-		},{
-			"cw_position": "65f7f4373c73fbdc7db3ee2e1eca7221",
-			"sdk_position": "75076",
-			"desc": "插屏数字帮助"
-		},{
-			"cw_position": "aed1b93b318ea10239d2e8dcb4a5f04a",
-			"sdk_position": "75076",
-			"desc": "插屏问号"
-		},{
-			"cw_position": "406e5f341cafe195a73850a41652eae1",
-			"sdk_position": "75076",
-			"desc": "插屏钥匙+"
-		},{
-			"cw_position": "784661cc0be4248ca9a558cccd627be5",
-			"sdk_position": "75076",
-			"desc": "插屏设置"
+			"cw_position": "70515cab1f5e0e3e7a8cb9e03b9d3fbc",
+			"sdk_position": "79221",
+			"desc": "下一关"
+
 		}
 	],
 	"banner_ad": {
-		"cw_position": " 9cb513ddf02145ba54c6b7f575584d0d",
-		"sdk_position": "88129",
+		"cw_position": " fb5cc1d4f6acdbce363f87f5e17f2197",
+		"sdk_position": "51182",
 		"desc": "banner1"
 	},
 	"reward_ad": [{
-			"cw_position": "41dc1034a748a6829906baf5a0c7aab0",
-			"sdk_position": "16135",
+			"cw_position": "d000861937ed8e6ce38f47438d45f2d3",
+			"sdk_position": "50216",
 			"desc": "激励视频解锁"
 		}
 	],
-	"fullscreen_ad": [{
-			"cw_position": "b130173c0983214d79567d10bde6a80f",
-			"sdk_position": "",
-			"desc": "全屏退出"
-		}
+	"fullscreen_ad": [
+	{
+			"cw_position": "4541f7132cb5f4f82985a4668254639e",
+			"sdk_position": "16809",
+			"desc": "过关成功"
+		},
+		{
+        			"cw_position": "c401b8b1cfca4f4def243adf00664b99",
+        			"sdk_position": "16809",
+        			"desc": "概率过关失败"
+        		},
+        		{
+                			"cw_position": "8f864ce37ebb1560f80e037b0f024209",
+                			"sdk_position": "16809",
+                			"desc": "过关失败"
+                		}
 	]
 }

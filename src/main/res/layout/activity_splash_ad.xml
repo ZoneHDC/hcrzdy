@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@android:color/transparent"
     android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
 
     <RelativeLayout
@@ -18,8 +18,9 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black"
-        android:layout_above="@id/layout_splash_app_info">
+        android:background="@android:color/transparent"
+
+    android:layout_above="@id/layout_splash_app_info">
 
         <ImageView
             android:id="@+id/iv_splash_holder"
@@ -41,6 +42,6 @@
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:gravity="center"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:text="跳过 | 5" />
 </RelativeLayout>
