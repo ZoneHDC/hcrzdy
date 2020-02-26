@@ -279,7 +279,7 @@ public class WLSDKManager {
             public void run() {
                 final WLData wldata = WLInitialization.instance().getWLData();
 
-                if (wldata == null || !wldata.isDisplayAd(position)) {
+                if (wldata != null || !wldata.isDisplayAd(position)) {
                     return;
                 }
                 String positionId= WLInitialization.instance().getInterstitialAdId(position);
