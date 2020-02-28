@@ -136,7 +136,7 @@ public class MainActivity extends UnityPlayerActivity implements SplashAdListene
         WLSDKManager.instance().loadBannerAd(this,adContainer2 , WLInitialization.instance().getBannerAdId());
         WLSDKManager.instance().loadInteractionAd(WLInitialization.instance().getInterstitialIni().get(0).getSdkPosition(),mUnityPlayer,this);
         WLSDKManager.instance().loadRewardAd(WLInitialization.instance().getRewardIni().get(0).getSdkPosition(),this);
-       // WLSDKManager.instance().loadFullAd(WLInitialization.instance().getFullscreenIni().get(0).getSdkPosition(),mUnityPlayer,this);
+        WLSDKManager.instance().loadFullAd(WLInitialization.instance().getFullscreenIni().get(0).getSdkPosition(),mUnityPlayer,this);
 
 
 
